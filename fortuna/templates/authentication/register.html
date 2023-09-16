@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}
+Registration
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <form action="{% url 'register' %}" method="POST">
+        <div class="row">
+            <label class="form-label" for="id_username">Username:</label>
+            <input class="form-control" type="text" name="username" maxlength="150" autofocus="" required=""
+                id="id_username">
+        </div>
+        <div class="row">
+            <label class="form-label" for="id_email">Email address:</label>
+            <input class="form-control" type="email" name="email" maxlength="254" id="id_email">
+        </div>
+        <div class="row">
+            <label class="form-label" for="id_role">Role:</label>
+            <select class="form-select" name="role" id="id_role">
+                <option value="investor" selected="">Investor</option>
+                <option value="contributor">Contributor</option>
+            </select>
+        </div>
+        <div class="row">
+            <label class="form-label" for="id_avatar">Avatar:</label>
+            <input class="form-control" type="file" name="avatar" accept="image/*" id="id_avatar">
+        </div>
+        <div class="row">
+            <label class="form-label" for="id_biography">Biography:</label>
+            <textarea class="form-control" name="biography" cols="40" rows="10" id="id_biography"></textarea>
+        </div>
+        <div class="row">
+            <label class="form-label" for="id_password1">Password:</label>
+            <input class="form-control" type="password" name="password1" required="" id="id_password1">
+        </div>
+        <div class="row">
+            <label class="form-label" for="id_password2">Confirm Password:</label>
+            <input class="form-control" type="password" name="password2" required="" id="id_password2">
+        </div>
+        {% csrf_token %}
+        <div class="row" style="margin-top: 10px;">
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}
